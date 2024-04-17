@@ -3,9 +3,10 @@ import axios from 'axios';
 import Legordulo from './components/Legordulo';
 import KerdesKartya from './components/KerdesKartya';
 
+
 function App() {
   const [questions, setQuestions] = useState([]);
-// eslint-disable-next-line
+
 const [selectedCategory, setSelectedCategory] = useState('');
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -29,14 +30,15 @@ const [selectedCategory, setSelectedCategory] = useState('');
 
   const fetchQuestions = async (categoryId) => {
     setLoading(true);
-    try {
+    console.log(`http://127.0.0.1:8000/api/tesztek/kategoria/${categoryId}`);
+    
       const response = await axios.get(`http://127.0.0.1:8000/api/tesztek/kategoria/${categoryId}`);
-      setQuestions(response.data);
-    } catch (error) {
-      setError('Error fetching questions');
-    } finally {
-      setLoading(false);
-    }
+      //setQuestions(response.data);
+      console.log(response.data);
+      let list=[];
+      list.push(response.data);
+      setQuestions(list);
+    
   };
 
   const handleCategoryChange = async (event) => {
@@ -48,13 +50,12 @@ const [selectedCategory, setSelectedCategory] = useState('');
   return (
     <div className="App">
       <Legordulo categories={categories} onCategoryChange={handleCategoryChange} />
-      {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <div className="question-cards">
         {questions.map(question => (
           <KerdesKartya key={question.id} question={question} />
         ))}
-        {!loading && questions.length === 0 && <p>No questions available</p>}
+        {!loading && questions.length === 0 && <p>Nincs elérhető kérdés</p>}
       </div>
     </div>
   );

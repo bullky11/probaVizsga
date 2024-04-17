@@ -1,0 +1,29 @@
+
+.question-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #739533; 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, auto); 
+    gap: 10px; 
+  }
+  
+  .question-card h3 {
+    margin-top: 0;
+    grid-column: span 2; 
+  }
+  
+  .question-card li {
+    margin-bottom: 5px;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .question-card {
+      grid-template-columns: 1fr; 
+      grid-template-rows: auto; 
+    }
+  }
+  
