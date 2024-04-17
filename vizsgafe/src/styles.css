@@ -3,27 +3,45 @@
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 5px;
-    background-color: #739533; 
+    background-color: #67f5f0; 
+  }
+  
+ 
+  .question-card h3 {
+    margin-top: 0;
+  }
+  
+ 
+  .question-card ul {
+    list-style-type: none;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
     grid-template-rows: repeat(2, auto); 
     gap: 10px; 
   }
   
-  .question-card h3 {
-    margin-top: 0;
-    grid-column: span 2; 
-  }
-  
+
   .question-card li {
-    margin-bottom: 5px;
+    margin-bottom: 0;
   }
   
+  .question-card button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+  }
   
-  @media screen and (max-width: 768px) {
-    .question-card {
-      grid-template-columns: 1fr; 
-      grid-template-rows: auto; 
-    }
+  .question-card button.selected {
+    background-color: green;
+    color: white;
+  }
+  
+
+  .question-card button:hover {
+    background-color: #e0e0e0;
   }
   
